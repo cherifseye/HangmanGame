@@ -145,9 +145,10 @@ def hangman(secret_word):
     print('-------------------------------------')
     print(f'you have {guesses_left} guess left')
     letters_guessed = []
+    get_guessed_word_ = get_guessed_word(secret_word, letters_guessed)
     available_letters = get_available_letters(letters_guessed)
     print(f'Available letters: {available_letters}')
-    while guesses_left > 0:
+    while guesses_left > 0 and get_guessed_word_ != secret_word:
         guess = input("please guess a letter: ")
         if guess not in string.ascii_lowercase:  
             warnings -= 1
@@ -157,13 +158,16 @@ def hangman(secret_word):
            print("Oops! You've already guessed that letter. You have {} left".format(warnings))       
         letters_guessed.append(guess)
         get_guessed_word_ = get_guessed_word(secret_word, letters_guessed)
+        available_letters = get_available_letters(letters_guessed)
         if guess in secret_word:
             print(f"Good gues: {get_guessed_word_}")
-            guesses_left -= 1
+            print('availableletters: {} '.format(available_letters))
+      
         else:
             print(f'Oops! That letter is not in my word: {get_guessed_word_}')  
             guesses_left -= 1   
-        print(f'you have {guesses_left} guess left') 
+        print(f'you have {guesses_left} guess left')
+        print('availableletters: {} '.format(available_letters)) 
     print("The hidden word was {}".format(secret_word))          
 
 
@@ -252,6 +256,7 @@ if __name__ == "__main__":
     # uncomment the following two lines.
     
     secret_word = choose_word(wordlist)
+    print(secret_word)
     hangman(secret_word)
 
 ###############
