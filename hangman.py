@@ -147,16 +147,24 @@ def hangman(secret_word):
     letters_guessed = []
     available_letters = get_available_letters(letters_guessed)
     print(f'Available letters: {available_letters}')
-    play = True
-    while play:
+    while guesses_left > 0:
         guess = input("please guess a letter: ")
+        if guess not in string.ascii_lowercase:  
+            warnings -= 1
+            print('Oops! That is not a valid letter.You have {} left:'.format(warnings))
+        if guess in letters_guessed:
+           warnings -= 1
+           print("Oops! You've already guessed that letter. You have {} left".format(warnings))       
         letters_guessed.append(guess)
         get_guessed_word_ = get_guessed_word(secret_word, letters_guessed)
         if guess in secret_word:
             print(f"Good gues: {get_guessed_word_}")
+            guesses_left -= 1
         else:
             print(f'Oops! That letter is not in my word: {get_guessed_word_}')  
-              
+            guesses_left -= 1   
+        print(f'you have {guesses_left} guess left') 
+    print("The hidden word was {}".format(secret_word))          
 
 
 
