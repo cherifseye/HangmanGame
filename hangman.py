@@ -149,8 +149,10 @@ def hangman(secret_word):
     available_letters = get_available_letters(letters_guessed)
     print(f'Available letters: {available_letters}')
     score = len(secret_word)
+    play = True
     while guesses_left > 0 and get_guessed_word_ != secret_word:
         guess = input("please guess a letter: ")
+        guess = guess.lower()
         if guess not in string.ascii_lowercase: 
             warnings -= 1
             print('Oops! That is not a valid letter.You have {} left:'.format(warnings))
