@@ -390,6 +390,5 @@ if __name__ == "__main__":
     # uncomment the following two lines. 
     
     secret_word = choose_word(wordlist)
-    print(secret_word)
     hangman_with_hints(secret_word)
     
