@@ -1,7 +1,6 @@
 # Problem Set 2, hangman.py
-# Name: 
-# Collaborators:
-# Time spent:
+# Name: Cherif SEYE
+# Time spent: ...
 
 # Hangman Game
 # -----------------------------------
@@ -157,11 +156,13 @@ def hangman(secret_word):
             warnings -= 1
             print('Oops! That is not a valid letter.You have {} warnings left:'.format(warnings))
             print(f'you have {guesses_left} guess left')
+            print('--------------------')
 
         elif guess in letters_guessed:
            warnings -= 1
            print("Oops! You've already guessed that letter. You have {} warnings left".format(warnings))
            print(f'you have {guesses_left} guess left')
+           print('--------------------')
 
         else:        
             letters_guessed.append(guess)
@@ -170,6 +171,7 @@ def hangman(secret_word):
             if guess in secret_word:
                 print(f"Good gues: {get_guessed_word_}")
                 print(f'you have {guesses_left} guess left')
+                print('--------------------')
                 print('availableletters: {} '.format(available_letters))
       
             else:
@@ -179,12 +181,14 @@ def hangman(secret_word):
                 else:
                     guesses_left -=1       
                 print(f'you have {guesses_left} guess left')
+                print('--------------------')
                 print('availableletters: {} '.format(available_letters))
 
         if warnings == 0:
             print(f'You got 3 warnings now you you lose 1 guesses') 
             guesses_left -=1
             print(f'you have {guesses_left} guess left')
+            print('--------------------')
 
     if get_guessed_word_ == secret_word:
         message = figlet_format("Congratulations!! 🎉")
@@ -202,8 +206,10 @@ def hangman(secret_word):
           "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳"
           "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳")
         print(f'Your total score for this game is: {guesses_left}')
+        print('--------------------')
     else:     
-        print("The hidden word was {}".format(secret_word)) 
+        print("The hidden word was {}".format(secret_word))
+        print('--------------------')
             
 
 
@@ -313,11 +319,13 @@ def hangman_with_hints(secret_word):
             warnings -= 1
             print('Oops! That is not a valid letter.You have {} warnings left:'.format(warnings))
             print(f'you have {guesses_left} guess left')
+            print('--------------------')
 
         elif guess in letters_guessed:
            warnings -= 1
            print("Oops! You've already guessed that letter. You have {} warnings left".format(warnings))
            print(f'you have {guesses_left} guess left')
+           print('--------------------')
 
         elif guess == '*':
           list_3 = show_possible_matches(get_guessed_word_)
@@ -325,6 +333,7 @@ def hangman_with_hints(secret_word):
           print("Possible word matches are:"
              "\n {} ".format(string_))
           print(f'you have {guesses_left} guess left')
+          print('--------------------')
           print('availableletters: {} '.format(available_letters))   
 
         else:        
@@ -334,6 +343,7 @@ def hangman_with_hints(secret_word):
             if guess in secret_word:
                 print(f"Good gues: {get_guessed_word_}")
                 print(f'you have {guesses_left} guess left')
+                print('--------------------')
                 print('availableletters: {} '.format(available_letters))
       
             else:
@@ -343,12 +353,14 @@ def hangman_with_hints(secret_word):
                 else:
                     guesses_left -=1       
                 print(f'you have {guesses_left} guess left')
+                print('--------------------')
                 print('availableletters: {} '.format(available_letters))
 
         if warnings == 0:
             print(f'You got 3 warnings now you you lose 1 guesses') 
             guesses_left -=1
             print(f'you have {guesses_left} guess left')
+            print('--------------------')
 
     if get_guessed_word_ == secret_word:
         message = figlet_format("Congratulations!! 🎉")
@@ -368,6 +380,7 @@ def hangman_with_hints(secret_word):
         print(f'Your total score for this game is: {guesses_left}')
     else:     
         print("The hidden word was {}".format(secret_word))
+        print('--------------------')
 
 
 # When you've completed your hangman_with_hint function, comment the two similar
