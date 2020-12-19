@@ -136,7 +136,7 @@ def hangman(secret_word):
     
     Follows the other limitations detailed in the problem write-up.
     '''
-  
+    
     warnings = 3
     guesses_left = 6
     length = len(secret_word)
@@ -204,7 +204,7 @@ def hangman(secret_word):
         print(f'Your total score for this game is: {guesses_left}')
     else:     
         print("The hidden word was {}".format(secret_word)) 
-    pass            
+            
 
 
 
@@ -223,7 +223,7 @@ def match_with_gaps(my_word, other_word):
         corresponding letters of other_word, or the letter is the special symbol
         _ , and my_word and other_word are of the same length;
         False otherwise: 
-    ''' '''
+    '''
     list_m = list(letter for letter in my_word)
     list_o = list(lettre for lettre in other_word)
     if len(list_m) != len(list_o):
@@ -235,7 +235,7 @@ def match_with_gaps(my_word, other_word):
     my_word = ''.join(list_m)
     other_word = ''.join(list_o)
 
-    return my_word == other_word'''
+    return my_word == other_word
               
 
 
@@ -251,8 +251,18 @@ def show_possible_matches(my_word):
              that has already been revealed.
 
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    """
+    list_word = list(letter for letter in my_word)
+    list_b = list(i for i in wordlist if len(i) == len(my_word))
+    list_c = list()
+    for j in list_b:
+        k = list(letter for letter in j)
+        for l in range(len(k)):
+            if list_word[l] == '_':
+                k[l] = '_'
+            if k == list_word:
+              list_c.append(j)
+    return list_c"""         
 
 
 
@@ -299,7 +309,6 @@ if __name__ == "__main__":
 
     # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
-    
     secret_word = choose_word(wordlist)
     hangman(secret_word)
 
