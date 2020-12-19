@@ -148,27 +148,60 @@ def hangman(secret_word):
     get_guessed_word_ = get_guessed_word(secret_word, letters_guessed)
     available_letters = get_available_letters(letters_guessed)
     print(f'Available letters: {available_letters}')
+    score = len(secret_word)
     while guesses_left > 0 and get_guessed_word_ != secret_word:
         guess = input("please guess a letter: ")
-        if guess not in string.ascii_lowercase:  
+        if guess not in string.ascii_lowercase: 
             warnings -= 1
             print('Oops! That is not a valid letter.You have {} left:'.format(warnings))
-        if guess in letters_guessed:
+            print(f'you have {guesses_left} guess left')
+
+        elif guess in letters_guessed:
            warnings -= 1
-           print("Oops! You've already guessed that letter. You have {} left".format(warnings))       
-        letters_guessed.append(guess)
-        get_guessed_word_ = get_guessed_word(secret_word, letters_guessed)
-        available_letters = get_available_letters(letters_guessed)
-        if guess in secret_word:
-            print(f"Good gues: {get_guessed_word_}")
-            print('availableletters: {} '.format(available_letters))
+           print("Oops! You've already guessed that letter. You have {} left".format(warnings))
+           print(f'you have {guesses_left} guess left')
+
+        else:        
+            letters_guessed.append(guess)
+            get_guessed_word_ = get_guessed_word(secret_word, letters_guessed)
+            available_letters = get_available_letters(letters_guessed)
+            if guess in secret_word:
+                print(f"Good gues: {get_guessed_word_}")
+                print(f'you have {guesses_left} guess left')
+                print('availableletters: {} '.format(available_letters))
       
-        else:
-            print(f'Oops! That letter is not in my word: {get_guessed_word_}')  
-            guesses_left -= 1   
-        print(f'you have {guesses_left} guess left')
-        print('availableletters: {} '.format(available_letters)) 
-    print("The hidden word was {}".format(secret_word))          
+            else:
+                print(f'Oops! That letter is not in my word: {get_guessed_word_}') 
+                if guess in 'aeiou': 
+                    guesses_left -= 2
+                else:
+                    guesses_left -=1       
+                print(f'you have {guesses_left} guess left')
+                print('availableletters: {} '.format(available_letters))
+
+        if warnings == 0:
+            print(f'You got 3 warnings now you you lose 1 guesses') 
+            guesses_left -=1
+            print(f'you have {guesses_left} guess left')
+
+    if get_guessed_word_ == secret_word:
+        message = figlet_format("Congratulations!! 🎉")
+        message2 = figlet_format("YOU WON")
+        print(colored(message, color="red"))
+        print(colored(message2, color='yellow'))
+        print("🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
+          "\n🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
+          "\n🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
+          "\n🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
+          "\n🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉🎉"
+          "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳"
+          "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳"
+          "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳"
+          "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳"
+          "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳")
+        print(f'Your total score for this game is: {guesses_left}')
+    else:     
+        print("The hidden word was {}".format(secret_word))          
 
 
 
