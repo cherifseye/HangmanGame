@@ -136,7 +136,7 @@ def hangman(secret_word):
     
     Follows the other limitations detailed in the problem write-up.
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
+  
     warnings = 3
     guesses_left = 6
     length = len(secret_word)
@@ -155,12 +155,12 @@ def hangman(secret_word):
         guess = guess.lower()
         if guess not in string.ascii_lowercase: 
             warnings -= 1
-            print('Oops! That is not a valid letter.You have {} left:'.format(warnings))
+            print('Oops! That is not a valid letter.You have {} warnings left:'.format(warnings))
             print(f'you have {guesses_left} guess left')
 
         elif guess in letters_guessed:
            warnings -= 1
-           print("Oops! You've already guessed that letter. You have {} left".format(warnings))
+           print("Oops! You've already guessed that letter. You have {} warnings left".format(warnings))
            print(f'you have {guesses_left} guess left')
 
         else:        
@@ -203,14 +203,12 @@ def hangman(secret_word):
           "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳")
         print(f'Your total score for this game is: {guesses_left}')
     else:     
-        print("The hidden word was {}".format(secret_word))          
+        print("The hidden word was {}".format(secret_word)) 
+    pass            
 
 
 
-# When you've completed your hangman function, scroll down to the bottom
-# of the file and uncomment the first two lines to test
-#(hint: you might want to pick your own
-# secret_word while you're doing your own testing)
+
 
 
 # -----------------------------------
@@ -225,9 +223,21 @@ def match_with_gaps(my_word, other_word):
         corresponding letters of other_word, or the letter is the special symbol
         _ , and my_word and other_word are of the same length;
         False otherwise: 
-    '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    ''' '''
+    list_m = list(letter for letter in my_word)
+    list_o = list(lettre for lettre in other_word)
+    if len(list_m) != len(list_o):
+        return False
+        
+    for i in range(len(list_m)):
+        if list_m[i] == '_':
+            list_o[i] = '_'
+    my_word = ''.join(list_m)
+    other_word = ''.join(list_o)
+
+    return my_word == other_word'''
+              
+
 
 
 
@@ -291,7 +301,6 @@ if __name__ == "__main__":
     # uncomment the following two lines.
     
     secret_word = choose_word(wordlist)
-    print(secret_word)
     hangman(secret_word)
 
 ###############
@@ -301,3 +310,4 @@ if __name__ == "__main__":
     
     #secret_word = choose_word(wordlist)
     #hangman_with_hints(secret_word)
+    
