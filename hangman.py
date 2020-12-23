@@ -97,11 +97,10 @@ def get_available_letters(letters_guessed):
     returns: string (of letters), comprised of letters that represents which letters have not
       yet been guessed.
     '''
-    list_2 = []
+
     list_3 = []
     string_ = string.ascii_lowercase
-    for i in string_:
-        list_2.append(i)
+    list_2 = list(letters for letters in string_)
     for j in range(len(list_2)):
         if list_2[j] not in letters_guessed:
               list_3.append(list_2[j])
@@ -378,7 +377,14 @@ def hangman_with_hints(secret_word):
           "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳"
           "\n🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳")
         print(f'Your total score for this game is: {guesses_left}')
-    else:     
+    else:
+        print("You lost")
+        print("🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲"
+          "\n🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲"
+          "\n🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲"
+          "\n🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲"
+          "\n🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲"
+          "\n🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲🥲")
         print("The hidden word was {}".format(secret_word))
         print('--------------------')
 
@@ -403,5 +409,6 @@ if __name__ == "__main__":
     # uncomment the following two lines. 
     
     secret_word = choose_word(wordlist)
+    print(secret_word)
     hangman_with_hints(secret_word)
     
