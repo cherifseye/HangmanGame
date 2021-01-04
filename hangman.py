@@ -267,7 +267,11 @@ def show_possible_matches(my_word):
                 k[l] = '_'
             if k == list_word:
               list_c.append(j)
-    return list_c        
+    list__ = []
+    for word_ in list_c:
+      if word_ not in list__:
+        list__.append(word_)          
+    return list__        
 
 
 
